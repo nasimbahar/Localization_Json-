@@ -1,0 +1,35 @@
+﻿@model IEnumerable<JsonDB.Models.AllLang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Languges </h2>
+
+<p>
+    @Html.ActionLink("Add New Language", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LangName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in ViewBag.allpath) {
+    <tr>
+        <td>
+            @item
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id = item })|
+            @Html.ActionLink("Language files", "Details", new { id = item })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "HowtoUse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>How To Use</h2>
+
+<div class="row">
+    <ul>
+
+        <li>
+            <p>
+                For Localization purpose Developers used Different Method for Example some developers store strings in database table some others use built in Framework method In Asp.net MVC usually programmers store string in Resource file, but some implements their own ideas.</p>
+
+           
+        </li>
+          <li>
+            <p>
+                In this project we implement Localization ideas with the help of Json. We creating for each languages a folder, and for each controller that 
+                load different views a json file to store all strings that are using in that views and controllers. 
+              
+             </p>
+        </li>
+
+        <li>
+            <p>
+               This Localization  project has below features
+                <ul>
+                    <li>
+                        you can add, remove,edit language which is a folder name
+                    </li>
+                    <li>
+                        you can add, remove,edit json file, if you are adding ,or removing or editing , the file will be modeified in all languages.
+                    </li>
+                    <li>
+                        In each json file you can add key and value, In the help of key we access related string. 
+                    </li>
+                    <li> when we add a key to a json file, the key will be added to all langauge related json file</li>
+                    <li> when we edit a string of a key . only in related language string will be changed</li>
+                    <li> when we deleted a key , from all related langauges json file will be deleted</li>
+
+                </ul>
+            </p>
+        </li>
+
+        <li>
+            <p>
+              how to use
+                <ul>
+                    <li>
+                        List all languge folder in show in dropdown
+                    </li>
+                    <li>
+                        pass the language file for each controller to the base controller and load the related json file according to session you created
+                    </li>
+                    <li>
+                        I created a helper function that want key and return string of that key
+                    <li> below is an example </li>
+                    <li>   var filename = Server.MapPath("~/Lang/pashto/login.json");//you can pass the file name to base controller dynamic</li>
+                    <li> var conent=System.IO.File.ReadAllText(filename);</li>
+                    <li> JArray json = (JArray)JsonConvert.DeserializeObject(conent);</li>
+                    <li> Utils.CurrentLoadFile= json.ToObject<List<LangData>>();</li>
+                    <li>var name=  Utils.Value("name");</li> 
+                    <li> Note:above code you add only in base controller and pass dynamic file name from each controller</li>
+
+                </ul>
+            </p>
+        </li>
+
+    </ul>
+
+</div>
+

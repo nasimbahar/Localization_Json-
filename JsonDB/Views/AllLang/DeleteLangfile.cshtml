@@ -1,0 +1,35 @@
+﻿@model JsonDB.Models.Controllerss
+
+@{
+    ViewBag.Title = "DeleteLangfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Language File</h2>
+
+<h3>Are you sure you want to delete this Controller from All Languages files?</h3>
+<div>
+   
+    <hr />
+    
+        
+        <div class="row">
+            <label class="col-md-2">Controller Name</label>
+           <div class="col-md-10"></div> @Html.DisplayFor(model => model.ControllergName)</div>
+            <label>@ViewBag.message</label>
+        </div>
+        
+      
+
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ControllergName)
+        @Html.HiddenFor(model => model.OldName)
+        @Html.HiddenFor(model=>model.LangName)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Details", new { id = ViewBag.lang })        </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<JsonDB.Models.LangData>
+
+@{
+    ViewBag.Title = "DetailsLangfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Strings </h2>
+
+<p>
+    @Html.ActionLink("Create New String", "CreateNewkey", new { controllername = ViewBag.ControllerName, lang = ViewBag.lang })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Key)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Key)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditLangText", new { lang = ViewBag.lang, controllername = ViewBag.ControllerName,key=item.Key }) |
+           
+            @Html.ActionLink("Delete", "DeleteLangText", new {lang=ViewBag.lang, controllername = ViewBag.ControllerName,key=item.Key })
+        </td>
+    </tr>
+}
+
+
+</table>

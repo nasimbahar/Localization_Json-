@@ -1,0 +1,40 @@
+﻿@model JsonDB.Models.Controllerss
+
+@{
+    ViewBag.Title = "CreatenewController";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create New  Language file</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="col-md-2">Controller Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ControllergName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ControllergName, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.LangName)
+                <label>@ViewBag.message</label>
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Details", new { id = ViewBag.lang })
+</div>
